@@ -1,0 +1,37 @@
+import random
+import time
+nn=1000000000000000000000000
+nn=int(nn)
+yes=True
+while yes:
+    print("Welcome to the game, the computer will take a number between 1-100 and you will guess a number. "
+          "The computer will then tell you if it i higher, lower or equal to the computer's number")
+    time.sleep(5)
+    num2=random.randint(1,100)
+    n=0
+    guessed=False
+    while not guessed:
+        num=input("What is the number? Make a guess between 1-100 ")
+        num=int(num)
+        n+=1
+        if num<num2:
+            print("You need to guess higher")
+        elif num>num2:
+            print("You need to guess lower")
+        elif num==num2:
+            n=str(n)
+            print("You guessed the number! Congrats. It took "+n+" guesses!")
+            n=int(n)
+            guessed=True
+    at=input("Would you like to play again? If you do say Yes")
+    if at=='Yes':
+        yes=False
+    else:
+        print("Okay, goodbye weird person that played this trash game!!!!!!!!!!!!!!!!!!!!!!!")
+    if nn>n:
+        nn=n
+
+    time.sleep(.5)
+    nn=str(nn)
+    print("Your new high score is "+nn)
+    nn=int(nn)
