@@ -1,0 +1,33 @@
+import time
+import random
+going=True
+
+name=input("What is your name ")
+print("Hello "+name+" time to play hangman")
+while going:
+    wordlist=["hello", "three", "dictionary", "pepperoni", "classes", "pneumonoultramicroscopicsilicovolcanoconiosis"]
+    wordindex=random.randint(1,len(wordlist)-1)
+    secret_word=wordlist[wordindex]
+    guesses=''
+    turns=len(secret_word)
+    while turns>0:
+        failed_guesses=0
+        for letter in secret_word:
+            if letter in guesses:
+                print(letter)
+            else:
+                print("-")
+                failed_guesses+=1
+        if failed_guesses==0:
+            print("You won!")
+            break
+        current_guess=input("Guess a letter: ")
+        if len(current_guess)>1:
+            print("Bad, you shall be killed")
+            break
+        guesses+=current_guess
+        if current_guess not in secret_word:
+            turns-=1
+            print("You guessed wrong. You now have "+str(turns)+" turns left")
+        if turns==0:
+            print("You lose. Your word was "+secret_word)
